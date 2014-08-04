@@ -9,8 +9,8 @@
         //height: 100%;
         width: 500px;
         height: 500px;
-        margin: 0px;
-        padding: 0px
+        margin: 10px;
+        padding: 10px
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -19,37 +19,41 @@
                 var myLatlng = new google.maps.LatLng(48.639167, 9.010833)
 		function initialize() {
 		  var mapOptions = {
-			zoom: 11,
+			zoom: 15,
 			center: myLatlng,
-                        mapTypeId: 'satellite'
+//                        mapTypeId: 'satellite'
 		  };
 		  map = new google.maps.Map(document.getElementById('map-canvas'),
                   mapOptions);
                   map.setTilt(45);
 
                   var marker = new google.maps.Marker({
+                      icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
                       position: myLatlng,
                       title:"Hello World!"
                     });
                   marker.setMap(map);
 
+
                   var rectangle = new google.maps.Rectangle({
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
+                    strokeColor: '#44FF00',
+                    strokeOpacity: 0.25,
                     strokeWeight: 2,
-                    fillColor: '#00FF00',
+                    fillColor: '#44FF00',
                     fillOpacity: 0.15,
                     map: map,
                     bounds: new google.maps.LatLngBounds(
-                      new google.maps.LatLng(48.639167-0.02000, 9.010833-0.04000),
-                      new google.maps.LatLng(48.639167+0.02000, 9.010833+0.04000))
-                  });
+                      new google.maps.LatLng(48.639167-0.00250, 9.010833-0.00250),
+                      new google.maps.LatLng(48.639167+0.00250, 9.010833+0.00250))
+                    });
+
+map.set('styles', [{"stylers":[{"hue":"#ff61a6"},{"visibility":"on"},{"invert_lightness":true},{"saturation":10},{"lightness":5}]}]);
 
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
   </head>
-  <body>
+  <body style="background: #1e1e1e">
     <div id="map-canvas"></div>
   </body>
 </html>
